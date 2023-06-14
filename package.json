@@ -1,0 +1,14 @@
+{
+  "name": "proyecto-final",
+  "version": "1.0.0",
+  "description": "La idea del proyecto final es hacer un sitio dinámico, sobre **banderas del mundo**, con la caracteristica de cada una, historia y datos sobre el país de dicha bandera.",
+  "main": "index.js",
+  "scripts": {
+    "build-sass": "sass ./sass/main.scss ./css/main.css -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.63.4"
+  }
+}
