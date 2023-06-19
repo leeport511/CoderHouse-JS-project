@@ -1,0 +1,322 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+  background-color: #1b262c;
+}
+
+main {
+  flex: 1;
+  padding: 10px 30px;
+  margin-top: 5px;
+}
+
+@media screen and (min-width: 1280px) {
+  body {
+    width: 92%;
+  }
+  main {
+    flex: 1;
+    padding: 20px 60px;
+    margin-top: 10px;
+  }
+}
+.footer {
+  background-color: #1b262c;
+  color: #eeeeee;
+  padding: 40px 15px;
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #bbe1fa;
+}
+.footer-group-icons {
+  text-align: center;
+  display: flex;
+  gap: 10px;
+  font-size: 35px;
+}
+.footer-group-icons .footer-icon {
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s linear;
+}
+.footer-group-icons .footer-icon:hover {
+  transform: scale(1.15);
+}
+.footer-data {
+  font-size: 12px;
+  text-align: center;
+}
+.footer-data .footer-email {
+  margin-bottom: 10px;
+  color: #eeeeee;
+}
+.footer-data .footer-email span {
+  font-weight: 700;
+}
+.footer-data .footer-address {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.footer-image {
+  display: none;
+}
+
+@media screen and (min-width: 1280px) {
+  .footer {
+    background-color: #1b262c;
+    color: #ffffff;
+    padding-left: 70px;
+    padding-right: 70px;
+    display: flex;
+    height: 80px;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #bbe1fa;
+    position: relative;
+  }
+  .footer-group-icons {
+    display: flex;
+    font-size: 40px;
+  }
+  .footer-data {
+    display: flex;
+    align-items: flex-end;
+    gap: 100px;
+    font-size: 16px;
+    text-align: center;
+  }
+  .footer-data .footer-address {
+    text-align: center;
+  }
+}
+.header {
+  background-color: #1b262c;
+  color: #eeeeee;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 10px;
+  min-width: 97%;
+}
+.header-section {
+  display: flex;
+}
+.header-section img {
+  width: 60px;
+}
+.header-section h1 {
+  font-family: "Bagel Fat One", cursive;
+  font-size: 24px;
+  text-transform: uppercase;
+  display: flex;
+  letter-spacing: 5px;
+  align-items: center;
+  margin-left: 30px;
+}
+.header-nav {
+  display: flex;
+  align-items: center;
+}
+.header-nav-desktop {
+  list-style: none;
+  padding-left: 0;
+  display: none;
+  gap: 60px;
+}
+.header-nav-menu {
+  position: relative;
+  display: none;
+  z-index: 30;
+  transition: all 0.5s linear;
+}
+.header-nav-menu .header-nav-mobile {
+  list-style: none;
+  background-color: #002b5b;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  width: 200px;
+  position: absolute;
+  left: -190px;
+  top: 43px;
+}
+.header-nav-menu .header-nav-mobile li {
+  width: 100%;
+  transition: all 0.4s ease-out;
+  border-radius: 20px;
+}
+.header-nav-menu .header-nav-mobile li:hover {
+  background-color: rgba(87, 197, 182, 0.1450980392);
+}
+.header-nav-menu .header-nav-mobile li a {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  padding: 15px;
+  color: #eeeeee;
+  text-decoration: none;
+}
+.header-nav .shadow-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-color: #bbe1fa;
+  border-width: 1px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 15px #eeeeee;
+}
+.header-nav .header-menu {
+  border: none;
+  cursor: pointer;
+  background: unset;
+  color: #eeeeee;
+}
+.header-nav .header-menu img {
+  width: 45px;
+  height: 45px;
+}
+
+@media screen and (min-width: 1280px) {
+  .header-nav {
+    display: flex;
+    align-items: center;
+  }
+  .header-section h1 {
+    font-size: 36px;
+  }
+  .header-nav-desktop {
+    list-style: none;
+    display: flex;
+    gap: 120px;
+  }
+  .header-nav-menu {
+    display: none;
+  }
+  .header-nav-desktop li a {
+    display: flex;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 4px;
+    color: #eeeeee;
+    padding: 10px 12px;
+    transition: all 0.15s ease-in;
+  }
+  .header-nav-desktop li a:hover {
+    background-color: rgba(187, 225, 250, 0.062745098);
+    border-radius: 5px;
+    transform: translate(-3px, -3px);
+  }
+  .header-menu {
+    display: none;
+  }
+}
+/* HOME */
+.home {
+  display: flex;
+  color: #eeeeee;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+}
+.home-container-r {
+  margin: 30px 0px;
+}
+.home-container-r h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-style: italic;
+  text-transform: capitalize;
+}
+.home-container-r h3 span {
+  color: #bbe1fa;
+}
+.home-title {
+  line-height: 70px;
+  margin-bottom: 25px;
+}
+.home-title h2 {
+  font-family: "Bagel Fat One", sans-serif;
+  font-size: 50px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.home-paragraph {
+  margin-bottom: 60px;
+  font-size: 18px;
+}
+.home .main-logo {
+  width: 270px;
+  height: 270px;
+  filter: drop-shadow(5px -5px 15px #0f4c75) drop-shadow(5px 4px 8px #bbe1fa);
+}
+.home-button {
+  background-color: #bbe1fa;
+  border: 2px solid #3282b8;
+  font-family: "Roboto", sans-serif;
+  margin-top: 80px;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 150px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.7s ease;
+}
+.home-button a {
+  text-decoration: none;
+  color: #0f4c75;
+  text-transform: capitalize;
+}
+.home-button a:hover {
+  color: #eeeeee;
+}
+.home-button:hover {
+  background-color: #3282b8;
+  box-shadow: 0px 0px 10px #bbe1fa;
+  font-size: 19px;
+}
+
+@media screen and (min-width: 1280px) {
+  .home {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    font-family: "Roboto", sans-serif;
+  }
+  .home-title h2 {
+    font-size: 70px;
+  }
+  .home-container-r {
+    width: 30%;
+  }
+  .home-container-r h3 {
+    margin-bottom: 20px;
+    font-size: 26px;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

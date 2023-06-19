@@ -1,0 +1,152 @@
+.header {
+  background-color: $blackBackground;
+  color: $backgroundWhite;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 10px;
+  min-width: 97%;
+
+  &-section {
+    display: flex;
+
+    img {
+      width: 60px;
+    }
+
+    h1 {
+      font-family: 'Bagel Fat One', cursive;
+      font-size: 24px;
+      text-transform: uppercase;
+      display: flex;
+      letter-spacing: 5px;
+      align-items: center;
+      margin-left: 30px;
+    }
+  }
+
+  &-nav {
+    display: flex;
+    align-items: center;
+
+    &-desktop {
+      list-style: none;
+      padding-left: 0;
+      display: none;
+      gap: 60px;
+    }
+
+    &-menu {
+      position: relative;
+      display: none;
+      z-index: 30;
+      transition: all 0.5s linear;
+
+      .header-nav-mobile {
+        list-style: none;
+        background-color: $darkBlue;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 20px;
+        width: 200px;
+        position: absolute;
+        left: -190px;
+        top: 43px;
+
+        li {
+          width: 100%;
+          transition: all 0.4s ease-out;
+          border-radius: 20px;
+          
+
+          &:hover {
+            background-color: #57c5b625;
+          }
+
+          a {
+            display: flex;
+            justify-content: center;
+            font-size: 20px;
+            padding: 15px;
+            color: $backgroundWhite;
+            text-decoration: none;
+
+          }
+        }
+      }
+    }
+
+    .shadow-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      border-color: $SuperlightBlue;
+      border-width: 1px;
+      border-radius: 5px;
+      box-shadow: 1px 1px 15px #eeeeee;
+    }
+
+    .header-menu {
+      border: none;
+      cursor: pointer;
+      background: unset;
+      color: $backgroundWhite;
+
+      img {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  }
+}
+
+
+
+@media screen and (min-width: 1280px) {
+
+  
+  .header-nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-section h1 {
+    font-size: 36px;
+  }
+
+  .header-nav-desktop {
+    list-style: none;
+    display: flex;
+    gap: 120px;
+  }
+
+  .header-nav-menu {
+    display: none;
+  }
+
+  .header-nav-desktop li a {
+    display: flex;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 4px;
+    color: $backgroundWhite;
+    padding: 10px 12px;
+    transition: all 0.15s ease-in;
+  }
+
+  .header-nav-desktop li a:hover {
+    background-color: #bbe1fa10;
+    border-radius: 5px;
+    transform: translate(-3px, -3px);
+  }
+
+  .header-menu {
+    display: none;
+  }
+}

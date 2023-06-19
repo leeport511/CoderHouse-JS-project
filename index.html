@@ -1,14 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <!-- escribir descripción aqui -->
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/af6705c1b1.js" crossorigin="anonymous"></script>
     <title>Proyecto CoderHouse Javascript</title>
-</head>
-<body>
+  </head>
 
-    <h2>Paises del Mundo</h2>
+  <body>
+  
+    <header class="header">
+      <section class="header-section">
+        <img src="./assets/images/free_icon_1.svg" alt="logo empresa" />
+        <h1>Wiki-Flags</h1>
+      </section>
+      <nav class="header-nav">
+        <ul class="header-nav-desktop">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./pages/services.html">Countries</a></li>
+          <li><a href="./pages/about.html">About & Suggestions</a></li>
+        </ul>
+        <button class="header-menu">
+          <img src="./assets/images/menu-hamburguesa.svg" alt="menu hamburguesa" />
+        </button>
+        <hr class="shadow-line" />
+        <nav class="header-nav-menu">
+          <ul class="header-nav-mobile">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./pages/services.html">Countries</a></li>
+            <li><a href="./pages/about.html">About & Suggestions</a></li>
+          </ul>
+        </nav>
+      </nav>
+    </header>
 
-    <script src="./scripts/main.js"></script>
-</body>
+    <main class="home">
+      <div class="home-container-l">
+        <div class="home-title">
+          <h2>wiki-flags</h2>
+        </div>
+        <div class="home-paragraph">
+          <p>We bring the data to you.</p>
+        </div>
+        <figure class="animate__animated animate__wobble">
+          <img
+            src="./assets/images/free_icon_1.svg"
+            alt="logo empresa"
+            class="main-logo"
+          />
+        </figure>
+        <button class="home-button">
+          <a href="./pages/services.html">let's start...</a>
+        </button>
+      </div>
+      <div class="home-container-r">
+        <h3>The importance of <span>flags</span></h3>
+        <blockquote><i>"The flag is not just a piece of cloth; it is a symbol of a nation's identity, unity, and aspirations."<br><br>
+          "A country's flag represents the pride, history, and values of its people, fluttering as a reminder of their shared heritage."<br><br>
+          "Flags are not merely fabric and colors; they carry the stories and aspirations of generations, symbolizing the resilience and aspirations of a nation."</i></blockquote>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <section class="footer-group-icons">
+        <a href="https://es.wikipedia.org/wiki/Wikipedia:Portada" class="footer-icon" aria-label="Wikipedia" target="_blank"><i class="fa-brands fa-wikipedia-w" style="color: #eeeeee;"></i></a>
+      </section>
+      <section class="footer-data">
+        <div class="footer-email">
+          <p><span>Contact Email: </span><i>leonardoandres.portillo@gmail.com</i></p>
+        </div>
+        <div class="footer-address">
+          <p>Somewhere in Ciudad Autónoma de Buenos Aires</p>
+          <p><span>&copy</span><b> 2023, </b>All rights reserved</p>
+        </div>
+      </section>
+    </footer>
+
+    <!-- <script src="./scripts/main.js"></script> -->
+  </body>
 </html>

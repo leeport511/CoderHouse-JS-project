@@ -1,0 +1,41 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    height: 100vh;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto", sans-serif;
+    background-color: $blackBackground;
+  }
+
+  main {
+    flex: 1;
+    padding: 10px 30px;
+    margin-top: 5px; 
+  }
+
+
+
+
+
+
+
+
+  @media screen and (min-width: 1280px) {
+    body {
+      width: 92%;
+    }
+  
+    main {
+      flex: 1;
+      padding: 20px 60px;
+      margin-top: 10px;
+    }
+  }
+  
