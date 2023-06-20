@@ -53,23 +53,23 @@
   }
 
   &-button {
-    background-color: $SuperlightBlue;
+    all: unset;
+    background-color: inherit;
     border: 2px solid $lightyBlue;
     font-family: 'Roboto', sans-serif;
     margin-top: 80px;
     margin-bottom: 10px;
-    padding: 10px;
-    width: 150px;
-    border-radius: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
     font-size: 18px;
     font-weight: 500;
     text-align: center;
     cursor: pointer;
-    transition: all 0.7s ease;
+    transition: all 0.3s ease;
 
     a {
       text-decoration: none;
-      color: $darkyBlue;
+      color: $backgroundWhite;
       text-transform: capitalize;
 
       &:hover {
@@ -78,9 +78,9 @@
     }
 
     &:hover {
-      background-color: $lightyBlue;
-      box-shadow: -0px -0px 10px $SuperlightBlue;
-      font-size: 19px;
+      background-color: #3282b890;
+      box-shadow: -0px -0px 4px $SuperlightBlue;
+    
       
     }
   }

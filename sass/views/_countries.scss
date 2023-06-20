@@ -1,0 +1,199 @@
+.countries {
+  display: flex;
+  flex-direction: column;
+  color: $backgroundWhite;
+  font-family: "Roboto", sans-serif;
+
+  &-filters {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0 50px 0;
+
+    label {
+      font-size: 20px;
+      margin-right: 8px;
+      letter-spacing: 3px;
+      font-weight: 600;
+    }
+
+    select {
+      border: none;
+      color: $backgroundWhite;
+      margin-top: 10px;
+      outline: 1px solid $SuperlightBlue;
+      font-size: 16px;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-family: "Roboto", sans-serif;
+      background-color: $blackBackground;
+      width: 100%;
+
+    }
+
+    input {
+      border: none;
+      outline: 1px solid $SuperlightBlue;
+      background: none;
+      color: $backgroundWhite;
+      padding: 10px 15px;
+      width: 100%;
+      border-radius: 5px;
+      background-image: url("../../assets/images/tiny-iconSearch.svg");
+      background-position: right 15px center;
+      background-repeat: no-repeat;
+      background-size: 16px;
+
+      &::placeholder {
+        color: #eeeeee80;
+      }
+    }
+
+    .byContinent {
+      margin-bottom: 15px;
+    }
+  }
+
+  &-flags {
+    .flags-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      gap: 30px;
+
+      .flag-card {
+        display: flex;
+        flex-direction: column;
+
+        width: 202px;
+        border: 1px solid $backgroundWhite;
+        border-radius: 15px;
+        transition: all 0.3s ease;
+
+        img {
+          width: 200px;
+          height: 120px;
+          border-radius: 14px;
+        }
+
+        &-info {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          padding: 8px 20px;
+          height: 120px;
+          text-align: center;
+          font-family: "Roboto", sans-serif;
+
+          h4 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 7px;
+          }
+
+          button {
+            text-transform: capitalize;
+            border: none;
+            padding: 3px 3px;
+            font-size: 16px;
+            font-weight: 300;
+            border-radius: 5px;
+            outline: 1px solid $SuperlightBlue;
+            background-color: inherit;
+            color: $SuperlightBlue;
+            cursor: pointer;
+
+            &:hover {
+              color: $backgroundWhite;
+              background-color: #bbe1fa20;
+            }
+          }
+        }
+
+        &:hover {
+          box-shadow: 0px -0px 20px $SuperlightBlue;
+          transform: translate(0px, 2px);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .countries {
+    &-filters {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      gap: 35px;
+
+      .byCountries {
+        display: flex;
+        align-items: center;
+        width: 20%;
+        
+      }
+
+      .byContinent {
+        display: flex;
+        align-items: center;
+        width: 20%;
+        margin-bottom: 0;
+      }
+
+      .bySearch {
+        width: 30%;
+        display: flex;
+      }
+      
+      label {
+        margin-right: 10px;
+      }
+
+      select, input {
+        width: 100%;
+        margin-top: 0;
+      }
+      
+      input {
+        padding: 8px 12px;
+        width: 100%;
+        font-size: 16px;
+        border-radius: 5px;
+        font-family: "Roboto", sans-serif;
+        background-image: url("../../assets/images/tiny-iconSearch.svg");
+        background-position: right 15px center;
+        background-repeat: no-repeat;
+        background-size: 16px;
+  
+        &::placeholder {
+          color: #eeeeee80;
+        }
+
+        &::-webkit-search-cancel-button {
+            -webkit-appearance: none;
+          }
+      }
+      
+      
+    }
+
+    &-flags {
+
+      .flags-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 25px;
+
+        
+      }
+    }
+  }
+}
