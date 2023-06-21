@@ -1,0 +1,170 @@
+.about-suggestions {
+  font-family: "Roboto", sans-serif;
+  color: $backgroundWhite;
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0;
+
+  .about {
+    margin-bottom: 15px;
+
+    &-title {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 32px;
+      text-transform: uppercase;
+      font-family: "Bagel Fat One", sans-serif;
+      letter-spacing: 0.14em;
+      text-shadow: 1px 1px 3px $SuperlightBlue;
+      font-weight: 600;
+    }
+
+    &-paragraph {
+      margin-bottom: 25px;
+
+      h4 {
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: 500;
+
+        &::before {
+          content: "\2022";
+          margin-right: 10px;
+        }
+      }
+
+      p {
+        font-size: 14px;
+        text-align: justify;
+        line-height: 1.55em;
+        font-weight: 300;
+      }
+    }
+  }
+  hr {
+    display: none;
+  }
+
+  .suggestions {
+    display: flex;
+    flex-direction: column;
+
+    &-title {
+      margin-bottom: 25px;
+
+      h2 {
+        text-align: center;
+        margin-bottom: 3px;
+        font-size: 32px;
+        font-family: "Bagel Fat One", sans-serif;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 3px $SuperlightBlue;
+      }
+      p {
+        text-align: center;
+        font-size: 15px;
+      }
+    }
+
+    &-form {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        letter-spacing: 3px;
+      }
+
+      input {
+        border: none;
+        outline: 1px solid $SuperlightBlue;
+        background: inherit;
+        border-radius: 5px;
+        padding: 10px 15px;
+        margin-bottom: 20px;
+        color: $backgroundWhite;
+
+        &:focus {
+          box-shadow: 0 0 10px $SuperlightBlue;
+        }
+
+        &::placeholder {
+          font-family: "Roboto", sans-serif;
+          color: #eeeeee80;
+        }
+      }
+
+      textarea {
+        border: none;
+        outline: 1px solid $SuperlightBlue;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        padding: 10px 15px;
+        background: inherit;
+        color: $backgroundWhite;
+        font-family: "Roboto", sans-serif;
+
+        &:focus {
+          box-shadow: 0 0 10px $SuperlightBlue;
+        }
+
+        &::placeholder {
+          font-family: "Roboto", sans-serif;
+          color: #eeeeee80;
+        }
+      }
+
+      button {
+        background: inherit;
+        outline: none;
+        margin: 0 auto;
+        border: 1px solid $lightyBlue;
+        color: $backgroundWhite;
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 10px 15px;
+        width: 40%;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+
+        &:hover {
+          background-color: #3282b890;
+          box-shadow: -0px -0px 4px $SuperlightBlue;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about-suggestions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 5%;
+
+    .about {
+      width: 50%;
+    }
+
+    hr {
+      display: block;
+      border: 1px solid #bbe1fa35;
+    }
+
+    .suggestions {
+      align-items: center;
+      width: 50%;
+
+      &-title {
+        width: 80%;
+      }
+
+      &-form {
+        width: 80%;
+      }
+    }
+  }
+}

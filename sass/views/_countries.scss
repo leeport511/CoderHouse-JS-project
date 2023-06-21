@@ -30,6 +30,9 @@
       background-color: $blackBackground;
       width: 100%;
 
+      &:focus {
+        box-shadow: 0 0 10px $SuperlightBlue;
+      }
     }
 
     input {
@@ -45,6 +48,10 @@
       background-repeat: no-repeat;
       background-size: 16px;
 
+      &:focus {
+        box-shadow: 0 0 10px $SuperlightBlue;
+      }
+
       &::placeholder {
         color: #eeeeee80;
       }
@@ -58,26 +65,28 @@
   &-flags {
     .flags-container {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
+      justify-content: center;
       flex-wrap: wrap;
       margin-top: 30px;
       margin-bottom: 30px;
-      gap: 30px;
+      gap: 2em;
+      
 
       .flag-card {
         display: flex;
         flex-direction: column;
-
-        width: 202px;
-        border: 1px solid $backgroundWhite;
-        border-radius: 15px;
+        padding: 0.4em;
+        width: 200px;
+        border: 1px solid $SuperlightBlue;
+        border-radius: 5px;
         transition: all 0.3s ease;
 
         img {
-          width: 200px;
+          width: 100%;
           height: 120px;
-          border-radius: 14px;
+          border-radius: 5px;
         }
 
         &-info {
@@ -96,20 +105,21 @@
           }
 
           button {
-            text-transform: capitalize;
-            border: none;
-            padding: 3px 3px;
-            font-size: 16px;
-            font-weight: 300;
-            border-radius: 5px;
-            outline: 1px solid $SuperlightBlue;
-            background-color: inherit;
-            color: $SuperlightBlue;
+            background: inherit;
+            outline: none;
+            margin: 0 auto;
+            border: 1px solid $lightyBlue;
+            color: $backgroundWhite;
             cursor: pointer;
+            border-radius: 5px;
+            padding: 5px 10px;
+
+            text-transform: uppercase;
+            letter-spacing: 3px;
 
             &:hover {
-              color: $backgroundWhite;
-              background-color: #bbe1fa20;
+              background-color: #3282b890;
+              box-shadow: -0px -0px 4px $SuperlightBlue;
             }
           }
         }
@@ -136,7 +146,6 @@
         display: flex;
         align-items: center;
         width: 20%;
-        
       }
 
       .byContinent {
@@ -150,16 +159,17 @@
         width: 30%;
         display: flex;
       }
-      
+
       label {
         margin-right: 10px;
       }
 
-      select, input {
+      select,
+      input {
         width: 100%;
         margin-top: 0;
       }
-      
+
       input {
         padding: 8px 12px;
         width: 100%;
@@ -170,29 +180,24 @@
         background-position: right 15px center;
         background-repeat: no-repeat;
         background-size: 16px;
-  
+
         &::placeholder {
           color: #eeeeee80;
         }
 
         &::-webkit-search-cancel-button {
-            -webkit-appearance: none;
-          }
+          -webkit-appearance: none;
+        }
       }
-      
-      
     }
 
     &-flags {
-
       .flags-container {
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: center;
         flex-wrap: wrap;
-        gap: 25px;
-
-        
+        gap: 2.5em;
       }
     }
   }
