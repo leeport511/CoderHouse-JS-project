@@ -26,9 +26,14 @@
 
 // alert(`Esta es la lista de paises que cargo:\n\n${listadoPaises}`);
 
+//-----------------------------------------------------------------------
+
 // PREENTREGA 2
 
+//Funcion para carga de paises
+
 const cargaPaises = () => {
+  //se crea la clase Pais
   class Pais {
     constructor(nombrePais, continente, habitantes, superficie) {
       this.nombrePais = nombrePais;
@@ -38,10 +43,11 @@ const cargaPaises = () => {
     }
   }
 
-  const paises = [];
+  const paises = []; // se crea el array donde van a ir los objetos, cada pais con sus propiedades
 
   let nombrePais;
 
+  // bucle donde se carga los paises y sus propiedades hasta salir con 'ESC'
   do {
     nombrePais = prompt(
       "Cargue el nombre del país y sus datos en los prompts siguientes (Escriba 'ESC' para finalizar)\n\n"
@@ -71,14 +77,41 @@ const cargaPaises = () => {
 
   console.log(paises);
 
-
+  // Una vez cargados todos los paises y sus props en el array paises, se hace un filtro por continente que devuelve los paises de cierto continente
+  let filtroContinente = prompt(
+    "Si quiere saber los paises de un continente especifico, escriba a continuacion el continente, las opciones son: Asia, America, Europa, Africa y Oceania"
+  );
+  filtroContinente = filtroContinente.toLowerCase();
 
   const filtraPaisesPorContinente = (continente) => {
+    const continentesValidos = [
+      "america",
+      "europa",
+      "asia",
+      "oceania",
+      "africa",
+    ];
+    if (!continentesValidos.includes(continente)) {
+      alert("el continente no existe, intente nuevamente");
+      return [];
+    }
+
     let filteredPais = paises.filter((pais) => pais.continente === continente);
-    let newFilter = filteredPais.map((pais) => pais.nombrePais)
+    let newFilter = filteredPais.map((pais) => pais.nombrePais);
     return newFilter;
   };
 
-  const paisesFiltrados = filtraPaisesPorContinente(prompt('Si quiere saber los paises de un continente especifico, escriba a continuacion el continente, las opciones son: Asia, America, Europa, Africa y Oceania'));
-  console.log(`los paises son ${paisesFiltrados.join(', ')}`);
+  let paisesFiltrados = filtraPaisesPorContinente(filtroContinente);
+
+  while (paisesFiltrados.length === 0) {
+    filtroContinente = prompt(
+      "El continente ingresado no existe, escriba nuevamente, las opciones son: Asia, America, Europa, Africa y Oceania"
+    );
+    filtroContinente = filtroContinente.toLowerCase();
+    paisesFiltrados = filtraPaisesPorContinente(filtroContinente);
+  }
+
+  console.log(`los paises son ${paisesFiltrados.join(", ")}`);
 };
+
+cargaPaises();
