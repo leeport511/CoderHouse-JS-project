@@ -24,3 +24,4 @@
 
 // alert(`Esta es la lista de paises que cargo:\n\n${listadoPaises}`);
 
+import { countryData } from "../constants/countryData.mjs";

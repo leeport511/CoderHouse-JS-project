@@ -127,7 +127,7 @@
         &:hover {
           text-shadow: 0px 0px 0.4rem $SuperlightBlue;
           transform: translate(0px, 2px);
-          box-shadow: 0px -0px 2px $SuperlightBlue;
+          box-shadow: 0px -0px 3px $SuperlightBlue;
         }
       }
     }
@@ -198,7 +198,7 @@
         flex-direction: row;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 2.5em;
+        gap: 5em;
       }
     }
   }
