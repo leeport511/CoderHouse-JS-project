@@ -1,27 +1,12 @@
-// let index = 0;
-// let cargaPaises = prompt(
-//   "Cargue todos los nombres de los paises que quiera, salga del programa escribiendo ESC \n\n"
-// );
-// let listadoPaises = "";
+// Open / Close Menu
 
-// const cargarPaises = (paises) => {
-//   while (paises !== "ESC") {
-//     index++;
+let menuButton = document.querySelector(".header-menu");
+let headerMobileMenu = document.querySelector(".header-nav-menu");
 
-//     if (paises === "ESC") {
-//       break;
-//     }
+menuButton.addEventListener("click", () => {
+  headerMobileMenu.classList.toggle("active");
 
-//     listadoPaises += `${index}. ${paises}\n`;
-//     paises = prompt(
-//       "Cargue todos los nombres de los paises que quiera, salga del programa escribiendo ESC\n\n"
-//     );
-//     console.log(listadoPaises);
-//   }
-// };
-
-// cargarPaises(cargaPaises);
-
-// alert(`Esta es la lista de paises que cargo:\n\n${listadoPaises}`);
-
-import { countryData } from "../constants/countryData.mjs";
+  headerMobileMenu.classList.contains('active')
+    ? (headerMobileMenu.style.display = "block")
+    : (headerMobileMenu.style.display = "none");
+});
