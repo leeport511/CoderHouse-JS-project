@@ -134,6 +134,7 @@
   }
 
   .modal {
+    display: none;
     position: fixed;
     z-index: 50;
     top: 50%;
@@ -196,6 +197,28 @@
           margin-bottom: 7px;
           font-size: 18px;
         }
+
+        .map {
+          display: inline;
+        }
+
+        .link {
+          display: inline-block;
+          cursor: pointer;
+          text-decoration: none;
+          color: $blackBackground;
+          font-family: "Roboto", sans-serif;
+          font-weight: 300;
+          font-size: 18px;
+          transition: all 0.2s ease-out;
+
+          &:hover {
+            color: $darkyBlue;
+            font-weight: 600;
+          }
+        }
+
+        
 
         &-borders {
           margin-top: 20px;
