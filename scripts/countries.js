@@ -112,7 +112,7 @@ const modalContent = (country) => {
                                     <p><b>sub-region:</b> ${
                                       country.subregion
                                     }</p>
-                                    <p><b>abrebiation:</b> ${
+                                    <p><b>abbreviation:</b> ${
                                       country.abbreviation
                                     }</p>
                                     <p><b>language:</b></p>
