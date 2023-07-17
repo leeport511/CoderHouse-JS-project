@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <!-- escribir descripción aqui -->
+    <link
+      rel="shortcut icon"
+      href="../assets/images/icono_wikiFlags.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/af6705c1b1.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Wiki-Flags Coder JS Project -- Countries</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <section class="header-section">
+        <a href="../index.html"
+          ><img src="../assets/images/free_icon_1.svg" alt="logo empresa"
+        /></a>
+        <h1>Wiki-Flags</h1>
+      </section>
+      <nav class="header-nav">
+        <ul class="header-nav-desktop">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../pages/countries.html">Countries</a></li>
+          <li>
+            <a href="../pages/about&suggestion.html">About & Suggestions</a>
+          </li>
+        </ul>
+        <button class="header-menu noSelect">
+          <img
+            src="../assets/images/menu-hamburguesa.svg"
+            alt="menu hamburguesa"
+          />
+        </button>
+        <hr class="shadow-line" />
+        <nav class="header-nav-menu noSelect">
+          <ul class="header-nav-mobile">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../pages/countries.html">Countries</a></li>
+            <li>
+              <a href="../pages/about&suggestion.html">About & Suggestions</a>
+            </li>
+          </ul>
+        </nav>
+      </nav>
+    </header>
+
+    <main class="countries">
+      <form class="countries-filters">
+        <div class="byCountries">
+          <label for="selectCountry" class="">Countries:</label>
+          <select name="selectCountry" id="selectCountry">
+            <option value="All">All</option>
+            <option value="countrie1">countrie1</option>
+            <option value="countrie2">countrie2</option>
+            <option value="countrie3">countrie3</option>
+          </select>
+        </div>
+        <div class="byContinent">
+          <label for="continent">Continent:</label>
+          <select name="continent" id="continent">
+            <option value="Africa">Africa</option>
+            <option value="America">America</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europe</option>
+            <option value="Ocenia">Oceania</option>
+          </select>
+        </div>
+        <div class="bySearch">
+          <input
+            type="search"
+            placeholder="Search..."
+            id="search"
+            autocomplete="off"
+          />
+        </div>
+      </form>
+      <section class="countries-flags">
+        <div class="flags-container"></div>
+      </section>
+      <section class="modal">
+        <div class="modal-container">
+          <!-- <div class="modal-header">
+            <div class="modal-title">
+              <img src="../assets/images/ar-flag.webp" alt="argentina" />
+              <h3>Argentina</h3>
+            </div>
+            <p>MAPA</p>
+          </div>
+          
+          <div class="modal-content">
+            <h4 class="modal-content-title">Country Information...</h4>
+            <p><b>capital:</b> Buenos Aires</p>
+            <p><b>region:</b> America</p>
+            <p><b>sub-region:</b> America Del Sur</p>
+            <p><b>abrebiation:</b> "ARG"</p>
+            <p><b>language:</b> Spanish</p>
+            <p><b>area:</b> 250000 km2</p>
+            <p><b>population:</b> 40.000.000 people</p>
+            <div class="modal-content-borders">
+              <h4>BORDERS</h4>
+            </div>
+          </div>
+          
+          <div class="modal-footer">
+            <button>BACK</button>
+          </div> -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <section class="footer-group-icons">
+        <a
+          href="https://es.wikipedia.org/wiki/Wikipedia:Portada"
+          class="footer-icon"
+          aria-label="Wikipedia"
+          target="_blank"
+          ><i class="fa-brands fa-wikipedia-w" style="color: #eeeeee"></i
+        ></a>
+      </section>
+      <section class="footer-data">
+        <div class="footer-email">
+          <p>
+            <span>Contact Email: </span><i>leonardoandres.portillo@gmail.com</i>
+          </p>
+        </div>
+        <div class="footer-address">
+          <p>Somewhere in Ciudad Autónoma de Buenos Aires</p>
+          <p><span>&copy</span><b> 2023, </b>All rights reserved</p>
+        </div>
+      </section>
+    </footer>
+    
+
+    <script src="../scripts/main.js"></script>
+    <script type="module" src="../scripts/countries.js"></script>
+    <script type="module" src="../scripts/constructor.js"></script>
+  </body>
+</html>

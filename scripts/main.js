@@ -76,6 +76,7 @@ const cargaPaises = () => {
   } while (nombrePais !== "ESC");
 
   console.log(paises);
+// Open / Close Menu
 
   // Una vez cargados todos los paises y sus props en el array paises, se hace un filtro por continente que devuelve los paises de cierto continente
   let filtroContinente = prompt(

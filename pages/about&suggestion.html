@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <!-- escribir descripción aqui -->
+    <link
+      rel="shortcut icon"
+      href="../assets/images/icono_wikiFlags.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/af6705c1b1.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Wiki-Flags Coder JS Project -- About & Suggestions</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <section class="header-section">
+        <a href="../index.html"
+          ><img src="../assets/images/free_icon_1.svg" alt="logo empresa"
+        /></a>
+        <h1>Wiki-Flags</h1>
+      </section>
+      <nav class="header-nav">
+        <ul class="header-nav-desktop">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../pages/countries.html">Countries</a></li>
+          <li>
+            <a href="../pages/about&suggestion.html">About & Suggestions</a>
+          </li>
+        </ul>
+        <button class="header-menu noSelect">
+          <img
+            src="../assets/images/menu-hamburguesa.svg"
+            alt="menu hamburguesa"
+          />
+        </button>
+        <hr class="shadow-line" />
+        <nav class="header-nav-menu noSelect">
+          <ul class="header-nav-mobile">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../pages/countries.html">Countries</a></li>
+            <li>
+              <a href="../pages/about&suggestion.html">About & Suggestions</a>
+            </li>
+          </ul>
+        </nav>
+      </nav>
+    </header>
+
+    <main class="about-suggestions">
+
+        <section class="about">
+            <h2 class="about-title">About Me</h2>
+            <div class="about-paragraph">
+                <h4>Who i am?</h4>
+                <p>I am a Junior web developer at the moment i'm tipying the code of this website, xD, hope when you find this project i'll be with more experience in this fantastic world of programming. At the moment i am doing the JS course at <b>CODERHOUSE</b> for get more information and learn a much more. I started to learn about coding in 2021, in the era of pandemic and since then i never stopped to learn. A very special mention to <b> Agustin Paz</b> for help me and thank you for never stop believing in me.</p>
+            </div>
+            <div class="about-paragraph">
+                <h4>Why this Project?</h4>
+                <p>When i started to think about this final JS project, i wondered what is gonna be useful not only for me, in order to pass my exam with flying colors, but also for other people who need information for the school, university and other stuff like those.<br>That's why I decided to make this website that is useful and bring to you all the information about countrie's stats and their flags. Hope You enjoy it like i enjoyed doing it.</p>
+            </div>
+        </section>
+        <hr/>
+        <section class="suggestions">
+            <div class="suggestions-title">
+                <h2>Suggestions</h2>
+                <p>Let's me know in you have any suggestion for this website.</p>
+            </div>
+            <form class="suggestions-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="Enter your name..." autocomplete="off"/>
+                <textarea name="suggestion" id="suggestion" cols="30" rows="10" placeholder="Enter your suggestion..."></textarea>
+                <button type="submit" id="btnSubmit">submit</button>
+            </form>
+        </section>
+      
+    </main>
+
+    <footer class="footer">
+      <section class="footer-group-icons">
+        <a
+          href="https://es.wikipedia.org/wiki/Wikipedia:Portada"
+          class="footer-icon"
+          aria-label="Wikipedia"
+          target="_blank"
+          ><i class="fa-brands fa-wikipedia-w" style="color: #eeeeee"></i
+        ></a>
+      </section>
+      <section class="footer-data">
+        <div class="footer-email">
+          <p>
+            <span>Contact Email: </span><i>leonardoandres.portillo@gmail.com</i>
+          </p>
+        </div>
+        <div class="footer-address">
+          <p>Somewhere in Ciudad Autónoma de Buenos Aires</p>
+          <p><span>&copy</span><b> 2023, </b>All rights reserved</p>
+        </div>
+      </section>
+    </footer>
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/formSuggestion.js"></script>
+  </body>
+</html>
