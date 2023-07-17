@@ -516,6 +516,17 @@ main {
   margin-bottom: 7px;
   font-size: 18px;
 }
+.countries .modal-container .modal-content .noInfo {
+  font-size: 16px;
+  font-style: italic;
+  color: red;
+}
+.countries .modal-container .modal-content li {
+  list-style: none;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  font-style: italic;
+}
 .countries .modal-container .modal-content .map {
   display: inline;
 }

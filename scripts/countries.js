@@ -30,25 +30,72 @@ const flagCard = () => {
 
 flagCard();
 
+console.log(countries);
+
 // MODAL CONTENT
 
 const modalContent = (country) => {
   let modalContainer = document.querySelector(".modal-container");
 
+  
+  // Verificar si el objeto country existe y tiene la propiedad currency, como puede tener uno o mas elementos se hace la verificacion
   let currencyName;
   let currencySymbol;
-  // Verificar si el objeto country existe y tiene la propiedad currency
+  let currencyContent = "";
+
   if (country.currency !== undefined) {
     const currencyCode = Object.keys(country.currency);
 
-    const currencyInfo = country.currency[currencyCode];
-    currencyName = currencyInfo.name;
-    currencySymbol = currencyInfo.symbol;
+    if (currencyCode.length >= 1) {
+      currencyContent = "<ul>";
+
+      currencyCode.forEach((currCode) => {
+        const currencyInfo = country.currency[currCode];
+        currencyName = currencyInfo.name;
+        currencySymbol = currencyInfo.symbol;
+
+        currencyContent += `<li> - ${currencyName} and the symbol is ${currencySymbol}</li>`;
+      });
+      currencyContent += "</ul>";
+    } else if (currencyCode.length < 1 ) {
+      currencyContent += `<p class="noInfo"> - No information provided</p>`;
+    }
+  } else {
+    currencyContent += `<p class="noInfo"> - No information provided</p>`;
   }
+
+  // Lo mismo con los idiomas que se hablan, son objetos donde cada key es diferente, por eso debe aislarlas para poder usarlas
+
+  let languageName;
+  let languageContent;
+
+    if(country.language !== undefined) {
+      const languageCode = Object.keys(country.language)
+      console.log(languageCode);
+
+      if(languageCode.length >= 1) {
+
+        languageContent = '<ul>';
+
+        languageCode.forEach(langCode =>{
+          const languageInfo = country.language[langCode];
+          languageName = languageInfo;
+
+          languageContent += `<li> - ${languageName}</li>`;
+
+        })
+
+        languageContent += '</ul>';
+      }
+    } else {
+       languageContent = '<p class="noInfo"> - No information provided</p>'
+    }
+
+
 
   modalContainer.innerHTML = `  <div class="modal-header">
                                     <div class="modal-title">
-                                      <img src=${country.flag} alt=${country.name} />
+                                      <img src=${country.flag} alt=${country.name}/>
                                       <h3>${country.name}</h3>
                                     </div>
                                     <div class="modal-content-borders">
@@ -56,41 +103,54 @@ const modalContent = (country) => {
                                     </div>
                                   </div>
                                   <div class="modal-content">
+                                  <div>
                                     <h4 class="modal-content-title">Country Information...</h4>
+                                  </div>
+                                  <div>
                                     <p><b>capital:</b> ${country.capital}</p>
                                     <p><b>region:</b> ${country.region}</p>
-                                    <p><b>sub-region:</b> ${country.subregion}</p>
-                                    <p><b>abrebiation:</b> ${country.abbreviation}</p>
-                                    <p><b>language:</b> ${country.language}</p>
+                                    <p><b>sub-region:</b> ${
+                                      country.subregion
+                                    }</p>
+                                    <p><b>abrebiation:</b> ${
+                                      country.abbreviation
+                                    }</p>
+                                    <p><b>language:</b></p>
+                                    ${languageContent}
                                     <p><b>area:</b> ${country.area} km2</p>
-                                    <p><b>population:</b> ${country.population} persons</p>
-                                    <p><b>currencies:</b> Actual currency of this country is ${currencyName} and the symbol is ${currencySymbol}</p>
-                                    <p class="map"><b>map: </b></p><span><a class="link" href='${country.maps.googleMaps}' target="_blank">${country.maps.googleMaps}</a></span>
+                                    <p><b>population:</b> ${country.population.toLocaleString()} persons</p>
+                                    <p><b>currencies:</b></p>
+                                    ${currencyContent}
+                                    <p class="map"><b>map: </b></p><span><a class="link" href='${
+                                      country.maps.googleMaps
+                                    }' target="_blank">${country.maps.googleMaps}</a></span>
+                                  </div>
                                   </div>
           
                                   <div class="modal-footer">
-                                  <button>BACK</button>
+                                    <button id='modalBackButton'>BACK</button>
                                   </div>
                                   `;
+
+  // CLOSE MODAL
+
+  const modalBtnClose = document.getElementById("modalBackButton");
+  modalBtnClose.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
 };
 
-
-// OPEN AND CLOSE MODAL
+// OPEN  MODAL
 
 const modalBtnOpen = document.querySelectorAll(".flag-card-info button");
 const modal = document.querySelector(".modal");
-const modalBtnClose = document.querySelector(".modal-footer button");
 
 modalBtnOpen.forEach((btn, i) =>
   btn.addEventListener("click", () => {
     let country = countries[i];
-    console.log(country);
     modalContent(country);
     modal.style.display = "block";
   })
 );
 
-// modalBtnClose.addEventListener("click", () => {
-//   console.log("click");
-//   modal.style.display = "none";
-// });
+
