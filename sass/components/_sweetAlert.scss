@@ -1,0 +1,37 @@
+.swal2-popup {
+  background-color: $blackBackground;
+  border: 3px solid $SuperlightBlue;
+  border-radius: 10px !important;
+  color: $backgroundWhite;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.swal2-title2 {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 28px !important;
+}
+
+.swal2-paragrahp{
+    text-transform: capitalize;
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-size: 16px !important;
+}
+
+.swal2-confirm {
+  background-color: $blackBackground ;
+  color: $SuperlightBlue;
+  font-weight: bold;
+  border: none;
+  outline: 2px solid $SuperlightBlue;
+  border-radius: 5px;
+  width: 100px;
+  padding: 8px;
+  margin-bottom: 2.5em;
+  cursor: pointer;
+
+  &:active {
+    background-color: #bbe1fa45,
+  }
+}
