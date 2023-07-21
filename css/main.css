@@ -162,16 +162,16 @@ main {
 }
 .header-nav-menu .header-nav-mobile {
   list-style: none;
-  background-color: #eeeeee;
+  background-color: #bbe1fa;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 20px;
+  border-radius: 0px 0px 20px 20px;
   border: 1px solid #0f4c75;
-  width: 200px;
+  width: 360px;
   position: absolute;
-  left: -190px;
+  right: -9px;
   top: 43px;
 }
 .header-nav-menu .header-nav-mobile li {
