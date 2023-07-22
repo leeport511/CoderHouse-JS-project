@@ -675,7 +675,7 @@ main {
     left: 50%;
     transform: translate(-50%, -50%);
     overflow: auto;
-    width: 60%;
+    width: 700px;
     font-family: "Roboto", sans-serif;
   }
   .modal-container {

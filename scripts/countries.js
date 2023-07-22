@@ -1,4 +1,8 @@
 import countries from "../scripts/constructor.js";
+// import flagCard from "./countriesFilters.js";
+
+let form = document.querySelector(".countries-filters");
+let selectCountry = document.getElementById("selectCountry");
 
 countries.sort((a, b) => {
   let countryA = a.name.toLowerCase();
@@ -13,16 +17,18 @@ countries.sort((a, b) => {
   return 0;
 });
 
-const flagCard = () => {
-  for (const country of countries) {
+
+const flagCard = (countriesToDisplay) => {
+  let countriesToShow = countriesToDisplay || countries;
+  for (const country of countriesToShow) {
     let flagContainer = document.querySelector(".flags-container");
     let flagCard = document.createElement("DIV");
     flagCard.className = "flag-card";
     flagCard.innerHTML = `<img src="${country.flag}" alt="Test Flag"></img>
-                                <div class="flag-card-info">
-                                    <h4>${country.name}</h4>
-                                    <button><img src="../assets/images/plus-icon.svg" id='' alt="more..."></button>
-                                    </div>`;
+                                  <div class="flag-card-info">
+                                      <h4>${country.name}</h4>
+                                      <button><img src="../assets/images/plus-icon.svg" class='btnCardFlag' alt="more..."></button>
+                                      </div>`;
 
     flagContainer.append(flagCard);
   }
@@ -30,14 +36,66 @@ const flagCard = () => {
 
 flagCard();
 
-console.log(countries);
+// FILTERS
+// FILTER BY COUNTRY
+
+for (let i = 0; i < countries.length; i++) {
+  countries.sort((a, b) => {
+    let countryA = a.name.toLowerCase();
+    let countryB = b.name.toLowerCase();
+
+    if (countryA < countryB) {
+      return -1;
+    }
+    if (countryA > countryB) {
+      return 1;
+    }
+    return 0;
+  });
+  const country = countries[i];
+
+  selectCountry.innerHTML += `<option value="${country.name}">${country.name}</option>`;
+}
+
+const FilterByCountry = () => {
+  selectCountry.addEventListener("change", (e) => {
+    let countrySelected = e.target.value;
+    let countryfiltered; 
+    
+    if(countrySelected ==='All') {
+        countryfiltered = countries;
+    } else {
+        countryfiltered = countries.filter(
+          (country) => country.name === countrySelected);
+    }
+    // console.log(countryfiltered);
+    clearFlagCards();
+    flagCard(countryfiltered);
+    openModal(countryfiltered);
+    
+    
+  });
+};
+
+const clearFlagCards = () => {
+  let flagContainer = document.querySelector(".flags-container");
+  flagContainer.innerHTML = ""; // Limpia todas las tarjetas de banderas
+};
+
+FilterByCountry();
+
+
+
+
+
+
+
 
 // MODAL CONTENT
 
-const modalContent = (country) => {
+export const modalContent = (country) => {
   let modalContainer = document.querySelector(".modal-container");
 
-  
   // Verificar si el objeto country existe y tiene la propiedad currency, como puede tener uno o mas elementos se hace la verificacion
   let currencyName;
   let currencySymbol;
@@ -57,7 +115,7 @@ const modalContent = (country) => {
         currencyContent += `<li> - ${currencyName} and the symbol is ${currencySymbol}</li>`;
       });
       currencyContent += "</ul>";
-    } else if (currencyCode.length < 1 ) {
+    } else if (currencyCode.length < 1) {
       currencyContent += `<p class="noInfo"> - No information provided</p>`;
     }
   } else {
@@ -69,33 +127,31 @@ const modalContent = (country) => {
   let languageName;
   let languageContent;
 
-    if(country.language !== undefined) {
-      const languageCode = Object.keys(country.language)
-      console.log(languageCode);
+  if (country.language !== undefined) {
+    const languageCode = Object.keys(country.language);
+    // console.log(languageCode);
 
-      if(languageCode.length >= 1) {
+    if (languageCode.length >= 1) {
+      languageContent = "<ul>";
 
-        languageContent = '<ul>';
+      languageCode.forEach((langCode) => {
+        const languageInfo = country.language[langCode];
+        languageName = languageInfo;
 
-        languageCode.forEach(langCode =>{
-          const languageInfo = country.language[langCode];
-          languageName = languageInfo;
+        languageContent += `<li> - ${languageName}</li>`;
+      });
 
-          languageContent += `<li> - ${languageName}</li>`;
-
-        })
-
-        languageContent += '</ul>';
-      }
-    } else {
-       languageContent = '<p class="noInfo"> - No information provided</p>'
+      languageContent += "</ul>";
     }
-
-
+  } else {
+    languageContent = '<p class="noInfo"> - No information provided</p>';
+  }
 
   modalContainer.innerHTML = `  <div class="modal-header">
                                     <div class="modal-title">
-                                      <img src=${country.flag} alt=${country.name}/>
+                                      <img src=${country.flag} alt=${
+    country.name
+  }/>
                                       <h3>${country.name}</h3>
                                     </div>
                                     <div class="modal-content-borders">
@@ -118,12 +174,16 @@ const modalContent = (country) => {
                                     <p><b>language:</b></p>
                                     ${languageContent}
                                     <p><b>area:</b> ${country.area} km2</p>
-                                    <p><b>population:</b> ${country.population.toLocaleString()} persons</p>
+                                    <p><b>population:</b> ${
+                                      country.population ? country.population.toLocaleString() : "No population data"
+                                    } </p>
                                     <p><b>currencies:</b></p>
                                     ${currencyContent}
                                     <p class="map"><b>map: </b></p><span><a class="link" href='${
                                       country.maps.googleMaps
-                                    }' target="_blank">${country.maps.googleMaps}</a></span>
+                                    }' target="_blank">${
+    country.maps.googleMaps
+  }</a></span>
                                   </div>
                                   </div>
           
@@ -142,15 +202,31 @@ const modalContent = (country) => {
 
 // OPEN  MODAL
 
-const modalBtnOpen = document.querySelectorAll(".flag-card-info button");
 const modal = document.querySelector(".modal");
 
-modalBtnOpen.forEach((btn, i) =>
-  btn.addEventListener("click", () => {
-    let country = countries[i];
-    modalContent(country);
-    modal.style.display = "block";
-  })
-);
+export const openModal = (name) => {
+  const modalBtnOpen = document.getElementsByClassName("btnCardFlag");
+  const modalBtnArray = [...modalBtnOpen];
+  // console.log(modalBtnArray);
+
+  modalBtnArray.forEach((btn, i) =>
+    btn.addEventListener("click", () => {
+      let country;
+      if (modalBtnArray.length > 1) {
+        country = countries[i];
+        console.log(country);
+      } else {
+        country = name[0]
+        console.log(country);
+      }
+      modalContent(country);
+      modal.style.display = "block";
+    })
+  );
+};
+openModal();
+
+
+
 
 

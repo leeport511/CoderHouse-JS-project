@@ -70,10 +70,8 @@
         <div class="byCountries">
           <label for="selectCountry" class="">Countries:</label>
           <select name="selectCountry" id="selectCountry">
-            <option value="All">All</option>
-            <option value="countrie1">countrie1</option>
-            <option value="countrie2">countrie2</option>
-            <option value="countrie3">countrie3</option>
+            <option value='' disabled selected>Select...</option>
+            <option value='All'>All</option>
           </select>
         </div>
         <div class="byContinent">
@@ -127,7 +125,8 @@
     </footer>
 
     <script src="../scripts/main.js"></script>
-    <script type="module" src="../scripts/countries.js"></script>
     <script type="module" src="../scripts/constructor.js"></script>
+    <script type="module" src="../scripts/countriesFilters.js"></script>
+    <script type="module" src="../scripts/countries.js"></script>
   </body>
 </html>
