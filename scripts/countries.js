@@ -20,6 +20,8 @@ countries.sort((a, b) => {
 
 //CREO EL CONTENIDO, CADA CARD ES EL PAIS CON SU BANDERA
 
+
+
 const flagCard = (countriesToDisplay) => {
   let countriesToShow = countriesToDisplay || countries;
   for (const country of countriesToShow) {
@@ -37,6 +39,26 @@ const flagCard = (countriesToDisplay) => {
 };
 
 flagCard();
+
+// recuperar filtro mediante localStorage
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.length > 0) {
+    let recoverData = JSON.parse(localStorage.getItem("countryfiltered"));
+    if (recoverData) {
+      clearFlagCards();
+      flagCard(recoverData);
+    }
+  }
+});
+
+// funcion que limpia la en dom de las flagsCards que se estan mostrando
+
+const clearFlagCards = () => {
+  // TODO: BORRAR TITULO CREADO POR FILTRO
+  let flagContainer = document.querySelector(".flags-container");
+  flagContainer.innerHTML = ""; // Limpia todas las tarjetas de banderas
+};
 
 // FILTERS
 // FILTER BY COUNTRY
@@ -77,17 +99,14 @@ const FilterByCountry = () => {
     clearFlagCards();
     flagCard(countryfiltered);
     openModal(countryfiltered);
+    localStorage.setItem("countryfiltered", JSON.stringify(countryfiltered));
     
-    
+    // TODO: Crear un TITULO PARA HACERLE SABER AL USUARIO LA SELECCION DEL FILTRO
+    selectCountry.value='';
   });
 };
 
-// funcion que limpia la en dom de las flagsCards que se estan mostrando
 
-const clearFlagCards = () => {
-  let flagContainer = document.querySelector(".flags-container");
-  flagContainer.innerHTML = ""; // Limpia todas las tarjetas de banderas
-};
 
 FilterByCountry();
 
@@ -139,7 +158,9 @@ const filterByContinent = () => {
     clearFlagCards();
     flagCard(continentfiltered);
     openModal(continentfiltered);
-    
+    // TODO: Crear un TITULO PARA HACERLE SABER AL USUARIO LA SELECCION DEL FILTRO
+    localStorage.setItem("countryfiltered", JSON.stringify(continentfiltered));
+    selectContinent.value='';
   })
   
 }
@@ -284,7 +305,6 @@ export const openModal = (name) => {
   );
 };
 openModal();
-
 
 
 
