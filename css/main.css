@@ -169,9 +169,9 @@ main {
   align-items: center;
   border-radius: 0px 0px 20px 20px;
   border: 1px solid #0f4c75;
-  width: 360px;
+  width: 375px;
   position: absolute;
-  right: -7px;
+  right: -14px;
   top: 43px;
 }
 .header-nav-menu .header-nav-mobile li {
