@@ -119,21 +119,21 @@ const newContinentArray = countries.map(country => country.region)
 const continentNames = [...new Set(newContinentArray)]
 
 
+continentNames.sort((a, b) => {
+  let continentA = a.toLowerCase();
+  let continentB = b.toLowerCase();
+
+  if (continentA < continentB) {
+    return -1;
+  }
+  if (continentA > continentB) {
+    return 1;
+  }
+  return 0;
+});
+
 for (let i = 0; i < continentNames.length; i++) {
   let continent = continentNames[i]
-  
-  continentNames.sort((a, b) => {
-    let continentA = a.toLowerCase();
-    let continentB = b.toLowerCase();
-
-    if (continentA < continentB) {
-      return -1;
-    }
-    if (continentA > continentB) {
-      return 1;
-    }
-    return 0;
-  });
 
   selectContinent.innerHTML += `<option value="${continent}">${continent}</option>`;
   
@@ -154,6 +154,7 @@ const filterByContinent = () => {
       continentfiltered = countries.filter(
           (country) => country.region === continentSelected);
     }
+    
 
     clearFlagCards();
     flagCard(continentfiltered);
