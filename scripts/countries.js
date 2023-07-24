@@ -1,13 +1,14 @@
 import countries from "../scripts/constructor.js";
-// import flagCard from "./countriesFilters.js";
 
-let form = document.querySelector(".countries-filters");
-let selectCountry = document.getElementById("selectCountry");
+
+
+
+// ORDENA EL ARRAY DE ALFABETICAMENTE, POR DEFECTO SE MUESTRAN TODOS
 
 countries.sort((a, b) => {
   let countryA = a.name.toLowerCase();
   let countryB = b.name.toLowerCase();
-
+  
   if (countryA < countryB) {
     return -1;
   }
@@ -17,6 +18,7 @@ countries.sort((a, b) => {
   return 0;
 });
 
+//CREO EL CONTENIDO, CADA CARD ES EL PAIS CON SU BANDERA
 
 const flagCard = (countriesToDisplay) => {
   let countriesToShow = countriesToDisplay || countries;
@@ -25,11 +27,11 @@ const flagCard = (countriesToDisplay) => {
     let flagCard = document.createElement("DIV");
     flagCard.className = "flag-card";
     flagCard.innerHTML = `<img src="${country.flag}" alt="Test Flag"></img>
-                                  <div class="flag-card-info">
-                                      <h4>${country.name}</h4>
-                                      <button><img src="../assets/images/plus-icon.svg" class='btnCardFlag' alt="more..."></button>
-                                      </div>`;
-
+    <div class="flag-card-info">
+    <h4>${country.name}</h4>
+    <button><img src="../assets/images/plus-icon.svg" class='btnCardFlag' alt="more..."></button>
+    </div>`;
+    
     flagContainer.append(flagCard);
   }
 };
@@ -38,6 +40,8 @@ flagCard();
 
 // FILTERS
 // FILTER BY COUNTRY
+
+let selectCountry = document.getElementById("selectCountry");
 
 for (let i = 0; i < countries.length; i++) {
   countries.sort((a, b) => {
@@ -59,6 +63,7 @@ for (let i = 0; i < countries.length; i++) {
 
 const FilterByCountry = () => {
   selectCountry.addEventListener("change", (e) => {
+    e.preventDefault();
     let countrySelected = e.target.value;
     let countryfiltered; 
     
@@ -68,7 +73,7 @@ const FilterByCountry = () => {
         countryfiltered = countries.filter(
           (country) => country.name === countrySelected);
     }
-    // console.log(countryfiltered);
+
     clearFlagCards();
     flagCard(countryfiltered);
     openModal(countryfiltered);
@@ -77,6 +82,8 @@ const FilterByCountry = () => {
   });
 };
 
+// funcion que limpia la en dom de las flagsCards que se estan mostrando
+
 const clearFlagCards = () => {
   let flagContainer = document.querySelector(".flags-container");
   flagContainer.innerHTML = ""; // Limpia todas las tarjetas de banderas
@@ -84,11 +91,60 @@ const clearFlagCards = () => {
 
 FilterByCountry();
 
+// FILTER BY CONTINENT
+
+const selectContinent = document.getElementById("selectContinent");
+
+const newContinentArray = countries.map(country => country.region)
+
+const continentNames = [...new Set(newContinentArray)]
 
 
+for (let i = 0; i < continentNames.length; i++) {
+  let continent = continentNames[i]
+  
+  continentNames.sort((a, b) => {
+    let continentA = a.toLowerCase();
+    let continentB = b.toLowerCase();
 
+    if (continentA < continentB) {
+      return -1;
+    }
+    if (continentA > continentB) {
+      return 1;
+    }
+    return 0;
+  });
 
+  selectContinent.innerHTML += `<option value="${continent}">${continent}</option>`;
+  
+}
 
+let continentfiltered;
+
+const filterByContinent = () => {
+  
+  selectContinent.addEventListener('change', (e) => {
+    e.preventDefault();
+
+    let continentSelected = e.target.value;
+    
+    if(continentSelected ==='All') {
+      continentfiltered = countries;
+    } else {
+      continentfiltered = countries.filter(
+          (country) => country.region === continentSelected);
+    }
+
+    clearFlagCards();
+    flagCard(continentfiltered);
+    openModal(continentfiltered);
+    
+  })
+  
+}
+
+filterByContinent()
 
 
 // MODAL CONTENT
@@ -129,7 +185,7 @@ export const modalContent = (country) => {
 
   if (country.language !== undefined) {
     const languageCode = Object.keys(country.language);
-    // console.log(languageCode);
+    
 
     if (languageCode.length >= 1) {
       languageContent = "<ul>";
@@ -150,8 +206,8 @@ export const modalContent = (country) => {
   modalContainer.innerHTML = `  <div class="modal-header">
                                     <div class="modal-title">
                                       <img src=${country.flag} alt=${
-    country.name
-  }/>
+                                        country.name
+                                      }/>
                                       <h3>${country.name}</h3>
                                     </div>
                                     <div class="modal-content-borders">
@@ -182,8 +238,8 @@ export const modalContent = (country) => {
                                     <p class="map"><b>map: </b></p><span><a class="link" href='${
                                       country.maps.googleMaps
                                     }' target="_blank">${
-    country.maps.googleMaps
-  }</a></span>
+                                      country.maps.googleMaps
+                                    }</a></span>
                                   </div>
                                   </div>
           
@@ -207,15 +263,18 @@ const modal = document.querySelector(".modal");
 export const openModal = (name) => {
   const modalBtnOpen = document.getElementsByClassName("btnCardFlag");
   const modalBtnArray = [...modalBtnOpen];
-  // console.log(modalBtnArray);
 
   modalBtnArray.forEach((btn, i) =>
     btn.addEventListener("click", () => {
       let country;
-      if (modalBtnArray.length > 1) {
+      if (modalBtnArray.length > 100) {
         country = countries[i];
         console.log(country);
-      } else {
+      } else if(modalBtnArray.length > 1 && modalBtnArray.length < 100) {
+        country = continentfiltered[i];
+        console.log(country);
+      }
+      else {
         country = name[0]
         console.log(country);
       }
