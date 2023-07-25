@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (recoverData) {
       clearFlagCards();
       flagCard(recoverData);
+      openModal(recoverData)
     }
   }
 });
