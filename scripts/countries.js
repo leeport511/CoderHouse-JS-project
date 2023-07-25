@@ -42,13 +42,15 @@ flagCard();
 
 // recuperar filtro mediante localStorage
 
+let recoverData;
 document.addEventListener('DOMContentLoaded', () => {
   if (localStorage.length > 0) {
-    let recoverData = JSON.parse(localStorage.getItem("countryfiltered"));
+    recoverData = JSON.parse(localStorage.getItem("countryfiltered"));
+    console.log(recoverData);
     if (recoverData) {
       clearFlagCards();
       flagCard(recoverData);
-      openModal(recoverData)
+      openModal(recoverData);
     }
   }
 });
@@ -292,14 +294,17 @@ export const openModal = (name) => {
       let country;
       if (modalBtnArray.length > 100) {
         country = countries[i];
-        console.log(country);
+        // console.log(country);
       } else if(modalBtnArray.length > 1 && modalBtnArray.length < 100) {
-        country = continentfiltered[i];
-        console.log(country);
+        if(localStorage.length === 0) {
+          country = continentfiltered[i];
+        } else {
+          country = name[i]
+        }
       }
       else {
         country = name[0]
-        console.log(country);
+        // console.log(country);
       }
       modalContent(country);
       modal.style.display = "block";
