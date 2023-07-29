@@ -1,28 +1,28 @@
 import countries from "../scripts/constructor.js";
 
 
-
-
 // ORDENA EL ARRAY DE ALFABETICAMENTE, POR DEFECTO SE MUESTRAN TODOS
 
-countries.sort((a, b) => {
-  let countryA = a.name.toLowerCase();
-  let countryB = b.name.toLowerCase();
   
-  if (countryA < countryB) {
-    return -1;
-  }
-  if (countryA > countryB) {
-    return 1;
-  }
-  return 0;
-});
+  countries.sort((a, b) => {
+    let countryA = a.name.toLowerCase();
+    let countryB = b.name.toLowerCase();
+    
+    if (countryA < countryB) {
+      return -1;
+    }
+    if (countryA > countryB) {
+      return 1;
+    }
+    return 0;
+  });
+
 
 //CREO EL CONTENIDO, CADA CARD ES EL PAIS CON SU BANDERA
 
 
 
-const flagCard = (countriesToDisplay) => {
+const flagCard = async (countriesToDisplay) => {
   let countriesToShow = countriesToDisplay || countries;
   for (const country of countriesToShow) {
     let flagContainer = document.querySelector(".flags-container");
@@ -46,7 +46,6 @@ let recoverData;
 document.addEventListener('DOMContentLoaded', () => {
   if (localStorage.length > 0) {
     recoverData = JSON.parse(localStorage.getItem("countryfiltered"));
-    console.log(recoverData);
     if (recoverData) {
       clearFlagCards();
       flagCard(recoverData);

@@ -29,41 +29,46 @@ class Country {
     this.maps = maps;
   }
 }
-
-const countries = [];
-
-for (let i = 0; i < countryData.length; i++) {
-  const country = countryData[i];
-  const countryName = country.name.common;
-  const flagImage = country.flags.png;
-  const {
-    capital,
-    region,
-    subregion,
-    cioc,
-    languages,
-    area,
-    population,
-    currencies,
-    borders,
-    maps,
-  } = country;
-
-  countries.push(new Country(
-    flagImage,
-    countryName,
-    capital,
-    region,
-    subregion,
-    cioc,
-    languages,
-    area,
-    population,
-    currencies,
-    borders,
-    maps
-  ));
-}
+let countries = [];
 
 
-export default countries;
+
+  for (let i = 0; i < countryData.length; i++) {
+    const country = countryData[i];
+    const countryName = country.name.common;
+    const flagImage = country.flags.png;
+    const {
+      capital,
+      region,
+      subregion,
+      cioc,
+      languages,
+      area,
+      population,
+      currencies,
+      borders,
+      maps,
+    } = country;
+
+    countries.push(
+      new Country(
+        flagImage,
+        countryName,
+        capital,
+        region,
+        subregion,
+        cioc,
+        languages,
+        area,
+        population,
+        currencies,
+        borders,
+        maps
+      )
+    );
+  };
+
+
+
+export default countries
+ 
