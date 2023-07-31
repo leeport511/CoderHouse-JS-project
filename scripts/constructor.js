@@ -13,7 +13,8 @@ class Country {
     population,
     currency,
     borders,
-    maps
+    maps,
+    countryId,
   ) {
     this.flag = flag;
     this.name = name;
@@ -27,6 +28,7 @@ class Country {
     this.currency = currency;
     this.borders = borders;
     this.maps = maps;
+    this.countryId = countryId;
   }
 }
 let countries = [];
@@ -37,6 +39,7 @@ let countries = [];
     const country = countryData[i];
     const countryName = country.name.common;
     const flagImage = country.flags.png;
+    const countryId = country.cca2;
     const {
       capital,
       region,
@@ -63,7 +66,8 @@ let countries = [];
         population,
         currencies,
         borders,
-        maps
+        maps,
+        countryId
       )
     );
   };

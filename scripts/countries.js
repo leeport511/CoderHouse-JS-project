@@ -1,6 +1,7 @@
 import countries from "../scripts/constructor.js";
 
 
+
 // ORDENA EL ARRAY DE ALFABETICAMENTE, POR DEFECTO SE MUESTRAN TODOS
 
   
@@ -170,10 +171,37 @@ const filterByContinent = () => {
 
 filterByContinent()
 
+//SEARCH
+
+const inputText = document.querySelector('#search');
+
+const findBySearch = () => {
+  inputText.addEventListener('keyup', (e) => {
+    e.preventDefault();
+
+    const userText = inputText.value.toLowerCase();
+    
+    const foundCountries = countries.filter(country => {
+      const text = country.name.toLowerCase();
+      if (text.indexOf(userText) !== -1) {
+        return country;
+      }
+    })
+
+    clearFlagCards();
+    flagCard(foundCountries);
+    openModal(foundCountries);
+
+  })
+}
+
+findBySearch()
+
 
 // MODAL CONTENT
 
-export const modalContent = (country) => {
+export const modalContent = async (country) => {
+
   let modalContainer = document.querySelector(".modal-container");
 
   // Verificar si el objeto country existe y tiene la propiedad currency, como puede tener uno o mas elementos se hace la verificacion
@@ -227,6 +255,27 @@ export const modalContent = (country) => {
     languageContent = '<p class="noInfo"> - No information provided</p>';
   }
 
+  // obtener banderas paises limitrofes
+  let flagBorderContent;
+
+  if (Array.isArray(country.borders)) {
+  let countryInfo = await getFlagsByBorder(country.borders);
+  console.log(countryInfo);
+    if(countryInfo.length > 0){
+      flagBorderContent = '';
+      countryInfo.forEach(country => {
+          let {flag, name} = country;
+          flagBorderContent += `<div class='borderContainer'>
+                                  <img src=${flag} alt=${name}/>
+                                  <p>${name}</p>
+                                </div>`
+        })
+    } else {
+      flagBorderContent = `<p class="noBorder">This Country doesn't have any border</p>`;
+    }
+  }
+  // *! Por algun motivo que desconozco no puedo hacer funcionar el else Cuando es undefined ^
+
   modalContainer.innerHTML = `  <div class="modal-header">
                                     <div class="modal-title">
                                       <img src=${country.flag} alt=${
@@ -235,7 +284,10 @@ export const modalContent = (country) => {
                                       <h3>${country.name}</h3>
                                     </div>
                                     <div class="modal-content-borders">
-                                      <h4>${country.borders}</h4>
+                                      <h3>Borders</h3>
+                                      <div>
+                                      ${flagBorderContent}
+                                      </div>
                                     </div>
                                   </div>
                                   <div class="modal-content">
@@ -313,5 +365,24 @@ export const openModal = (name) => {
 openModal();
 
 
+//Fetch para obtener de la api los paises limitrofes y usarlos dentro del Modal Content
+
+const getFlagsByBorder = async (arrayBorders) => {
+  const countryInfo = [];
+
+  for(let bord of arrayBorders) {
+    const res = await fetch(`https://restcountries.com/v2/alpha/${bord}`);
+    const data = await res.json();
+
+    
+    if (data.borders && Array.isArray(data.borders) && data.borders.length > 0) {
+      countryInfo.push({
+        flag: data.flag,
+        name: data.name
+      });
+     }
+  }
 
 
+  return countryInfo;
+}
