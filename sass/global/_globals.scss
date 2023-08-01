@@ -36,7 +36,21 @@
     outline: none !important;
 }
 
+// tooltip
 
+.tippy-tooltip.flag-theme {
+  background-color: $SuperlightBlue;
+  color: $blackBackground;
+  border: 1px solid $blackBackground;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+
+.tippy-content {
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 0.1em;
+
+}
 
 
   @media screen and (min-width: 1280px) {
@@ -51,3 +65,4 @@
     }
   }
   
+

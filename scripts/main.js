@@ -14,6 +14,21 @@ btnMenu.addEventListener('click', () => {
 })
 
 
+// tooltip
+
+tippy('.tt',{
+  theme: 'flag',
+  content:"Click Here For Further Information...",
+  delay: [200,100],
+  distance: 20,
+  arrow: false,
+  placement: 'top'
+});
+
+
+
+
+
 
 
 

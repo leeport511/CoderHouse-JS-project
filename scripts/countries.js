@@ -58,9 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
 // funcion que limpia la en dom de las flagsCards que se estan mostrando
 
 const clearFlagCards = () => {
-  // TODO: BORRAR TITULO CREADO POR FILTRO
   let flagContainer = document.querySelector(".flags-container");
-  flagContainer.innerHTML = ""; // Limpia todas las tarjetas de banderas
+  flagContainer.innerHTML = ""; 
+  
+  // BORRAR TITULO CREADO POR FILTRO
+  let titleContinent = document.querySelector('.continent-title');
+  titleContinent.innerHTML= ""; 
+
 };
 
 // FILTERS
@@ -104,7 +108,6 @@ const FilterByCountry = () => {
     openModal(countryfiltered);
     localStorage.setItem("countryfiltered", JSON.stringify(countryfiltered));
     
-    // TODO: Crear un TITULO PARA HACERLE SABER AL USUARIO LA SELECCION DEL FILTRO
     selectCountry.value='';
   });
 };
@@ -125,7 +128,7 @@ const continentNames = [...new Set(newContinentArray)]
 continentNames.sort((a, b) => {
   let continentA = a.toLowerCase();
   let continentB = b.toLowerCase();
-
+  
   if (continentA < continentB) {
     return -1;
   }
@@ -134,6 +137,7 @@ continentNames.sort((a, b) => {
   }
   return 0;
 });
+
 
 for (let i = 0; i < continentNames.length; i++) {
   let continent = continentNames[i]
@@ -162,7 +166,19 @@ const filterByContinent = () => {
     clearFlagCards();
     flagCard(continentfiltered);
     openModal(continentfiltered);
-    // TODO: Crear un TITULO PARA HACERLE SABER AL USUARIO LA SELECCION DEL FILTRO
+
+    // Crea un TITULO PARA HACERLE SABER AL USUARIO LA SELECCION DEL FILTRO
+    
+    const flagsSection = document.querySelector('.continent-title');
+    const continentTitle = document.createElement('div');
+    if (continentfiltered && continentSelected !== 'All') {
+      continentTitle.innerHTML = `<h2>${continentSelected}</h2>`
+    } else if (continentSelected === 'All') {
+      continentTitle.innerHTML = `<h2>All continents</h2>`
+    }
+
+    flagsSection.append(continentTitle);
+
     localStorage.setItem("countryfiltered", JSON.stringify(continentfiltered));
     selectContinent.value='';
   })
@@ -183,6 +199,7 @@ const findBySearch = () => {
     
     const foundCountries = countries.filter(country => {
       const text = country.name.toLowerCase();
+      
       if (text.indexOf(userText) !== -1) {
         return country;
       }

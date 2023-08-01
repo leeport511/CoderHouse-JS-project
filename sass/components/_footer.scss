@@ -18,12 +18,16 @@
       text-decoration: none;
       color: #fff;
       transition: all 0.3s linear;
-
-      &:hover {
-        transform: scale(1.15);
-      }
+      white-space: nowrap;
+      
+        &:hover {
+          transform: scale(1.15);
+        }
+        
     }
   }
+  
+  
 
   &-data {
     font-size: 12px;
@@ -48,6 +52,8 @@
   &-image {
     display: none;
   }
+
+  
 }
 
 // RESPONSIVE
